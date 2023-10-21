@@ -7,9 +7,10 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
-          "skipTests": true,
-          "standalone": true
+          "style": "none",
+          "standalone": true,
+          "changeDetection": "OnPush",
+          "skipTests": true
         },
         "@schematics/angular:class": {
           "skipTests": true
@@ -125,5 +126,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
