@@ -62,18 +62,21 @@ export class AddPlantComponent {
 
   onSave(): void {
     this.saveErrorState.update(() => ({ error: false }));
-    if (this.addPlantForm.valid) {
-      const formValue = this.addPlantForm.value;
+    try {
+      if (this.addPlantForm.valid) {
+        const formValue = this.addPlantForm.value;
 
-      const plant: Plant = {
-        ...formValue,
-        id: this.highestPlantId + 1,
-      };
+        const plant: Plant = {
+          ...formValue,
+          id: this.highestPlantId + 1,
+        };
 
-      this.plantsService.addPlant(plant);
-      this.router.navigate(['/plant-inventory']);
+        this.plantsService.addPlant(plant);
+        this.router.navigate(['/plant-inventory']);
+      }
+    } catch (error) {
+      this.saveErrorState.update(() => ({ error: true }));
     }
-    this.saveErrorState.update(() => ({ error: true }));
   }
 
   navigateToPlantInventory() {
