@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,4 +13,10 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class HeaderPlantInventoryComponent {
   @Input() plantInventoryButtonText: string | undefined;
+
+  constructor(private router: Router) { }
+
+  navigateToAddPlant(): void {
+    this.router.navigate(['add-plant']);
+  }
 }
