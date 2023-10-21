@@ -1,3 +1,14 @@
 <section class="px-6">
   <plantino-header-add-plant addPlantHeaderText="New Plant" />
+  <form>
+    <div>
+      <button
+        mat-raised-button
+        class="tomato-soup-btn"
+        (click)="navigateToPlantInventory()"
+      >
+        Cancel</button
+      ><button mat-raised-button color="accent" type="submit">Save</button>
+    </div>
+  </form>
 </section>
