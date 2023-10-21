@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}",
-  ],
+  content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {
       fontSize: {
@@ -27,7 +25,7 @@ module.exports = {
       colors: {
         cream: '#F5F2E5',
         tomatoSoup: {
-          100: '#DA8061'
+          100: '#DA8061',
         },
         plantGreen: {
           100: '#65674D',
@@ -40,4 +38,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

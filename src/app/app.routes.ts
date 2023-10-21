@@ -5,5 +5,5 @@ import { PlantInventoryComponent } from './containers/plant-inventory/plant-inve
 export const routes: Routes = [
   { path: 'add-plant', component: AddPlantComponent },
   { path: 'plant-inventory', component: PlantInventoryComponent },
-  { path: '', redirectTo: 'plant-inventory', pathMatch: 'full' }
+  { path: '', redirectTo: 'plant-inventory', pathMatch: 'full' },
 ];

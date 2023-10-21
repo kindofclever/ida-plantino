@@ -3,10 +3,10 @@ import { Plant } from '../types/plant.interface';
 import { isNil } from 'lodash-es';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PlantsService {
-  LOCALE_STORAGE_KEY = 'plants'
+  LOCALE_STORAGE_KEY = 'plants';
 
   state = signal<{ plants: Plant[] }>({ plants: this.getInitialState() });
   plants = computed(() => this.state().plants);
@@ -25,10 +25,13 @@ export class PlantsService {
   addPlant(plant: Plant): void {
     if (!isNil(plant)) {
       const updatedPlants = [...this.state().plants, plant];
-      this.state.update(currentState => ({ ...currentState, plants: updatedPlants }));
+      this.state.update(currentState => ({
+        ...currentState,
+        plants: updatedPlants,
+      }));
       this.saveToLocStor(updatedPlants);
     }
   }
 
-  constructor() { }
+  constructor() {}
 }
