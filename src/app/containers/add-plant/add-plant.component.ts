@@ -14,6 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { HeaderAddPlantComponent } from '../../components/header-add-plant/header-add-plant.component';
 import { PlantsService } from 'src/app/services/plants.service';
+import { Plant } from 'src/app/types/plant.interface';
 
 @Component({
   selector: 'plantino-add-plant',
@@ -33,6 +34,8 @@ import { PlantsService } from 'src/app/services/plants.service';
 })
 export class AddPlantComponent {
   addPlantForm: FormGroup;
+  highestPlantId: number;
+
 
 
   constructor(
@@ -41,6 +44,7 @@ export class AddPlantComponent {
     private plantsService: PlantsService
   ) {
     this.addPlantForm = this.createFormGroup();
+    this.highestPlantId = this.plantsService.highestPlantId();
   }
 
   createFormGroup(): FormGroup {
@@ -57,7 +61,23 @@ export class AddPlantComponent {
 
   onSave(): void {
 
-    console.log(this.addPlantForm);
+    try {
+      if (this.addPlantForm.valid) {
+        const formValue = this.addPlantForm.value;
+
+        const plant: Plant = {
+          ...formValue,
+          id: this.highestPlantId + 1,
+        };
+
+        this.plantsService.addPlant(plant);
+        this.router.navigate(['/plant-inventory']);
+      } else {
+        console.log('error 1')
+      }
+    } catch (error) {
+      console.log('error 1')
+    }
   }
 
   navigateToPlantInventory() {
