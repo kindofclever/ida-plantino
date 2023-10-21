@@ -15,6 +15,8 @@ import { PlantCardComponent } from "../../components/plant-card/plant-card.compo
 })
 export class PlantInventoryComponent implements OnInit {
   plants: Plant[] = [];
+  filteredPlantsState = signal<{ plants: Plant[] }>({ plants: [] });
+
 
   constructor(private plantsService: PlantsService) { }
 
