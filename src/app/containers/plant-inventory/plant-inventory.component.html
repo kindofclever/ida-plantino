@@ -1,5 +1,8 @@
 <section class="px-6">
-  <plantino-header-plant-inventory plantInventoryButtonText="Add plant" />
+  <plantino-header-plant-inventory
+    plantInventoryButtonText="Add plant"
+    (searchChanged)="onSearchChanged($event)"
+  />
   <ng-container *ngIf="filteredPlants() as filteredPlants">
     <div *ngIf="!filteredPlants.length" class="text-2xl font-semibold mt-10">
       No plants available.
@@ -8,7 +11,7 @@
       <plantino-plant-card
         *ngFor="let plant of filteredPlants"
         [plant]="plant"
-      ></plantino-plant-card>
+      />
     </div>
   </ng-container>
 </section>
