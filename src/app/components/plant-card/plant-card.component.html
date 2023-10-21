@@ -1,1 +1,17 @@
-<p>plant-card works!</p>
+<div
+  *ngIf="plant"
+  class="rounded flex items-center justify-start hover:scale-105 transition duration-300"
+>
+  <div class="h-24 flex justify-center items-center">
+    <div class="w-24 h-24 bg-plantGreen-100 rounded-full mr-8"></div>
+  </div>
+  <div class="h-24 flex flex-col justify-center items-start">
+    <span class="text-sm mr-2">ID: {{ plant.id }}</span>
+    <span class="font-bold text-3xl line-clamp-1">{{ plant.name }}</span>
+    <div class="flex min-w-max">
+      <span class="mr-2">{{ plant.price | currency: 'CHF ' }} </span>
+      <span class="mr-2">|</span>
+      <span>{{ plant.dateOfPurchase | date: 'dd.MM.yyyy' }}</span>
+    </div>
+  </div>
+</div>

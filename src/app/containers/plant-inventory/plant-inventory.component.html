@@ -1,3 +1,9 @@
 <section class="px-6">
   <plantino-header-plant-inventory plantInventoryButtonText="Add plant" />
+  <div class="mt-10 grid grid-cols-4 gap-10 w-full">
+    <plantino-plant-card
+      *ngFor="let plant of plants"
+      [plant]="plant"
+    ></plantino-plant-card>
+  </div>
 </section>
