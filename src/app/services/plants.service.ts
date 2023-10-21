@@ -1,4 +1,4 @@
-import { Injectable, computed, signal, update } from '@angular/core';
+import { Injectable, computed, signal } from '@angular/core';
 import { Plant } from '../types/plant.interface';
 import { isNil } from 'lodash-es';
 
