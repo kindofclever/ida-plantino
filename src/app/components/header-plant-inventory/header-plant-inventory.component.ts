@@ -1,11 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   selector: 'plantino-header-plant-inventory',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule],
   templateUrl: './header-plant-inventory.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderPlantInventoryComponent {}
+export class HeaderPlantInventoryComponent {
+  @Input() plantInventoryButtonText: string | undefined;
+}
