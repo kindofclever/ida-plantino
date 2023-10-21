@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -36,7 +36,8 @@ export class AddPlantComponent {
   addPlantForm: FormGroup;
   highestPlantId: number;
 
-
+  saveErrorState = signal<{ error: boolean }>({ error: false })
+  saveError = computed(() => this.saveErrorState().error)
 
   constructor(
     private router: Router,
@@ -60,24 +61,19 @@ export class AddPlantComponent {
   }
 
   onSave(): void {
+    this.saveErrorState.update(() => ({ error: false }));
+    if (this.addPlantForm.valid) {
+      const formValue = this.addPlantForm.value;
 
-    try {
-      if (this.addPlantForm.valid) {
-        const formValue = this.addPlantForm.value;
+      const plant: Plant = {
+        ...formValue,
+        id: this.highestPlantId + 1,
+      };
 
-        const plant: Plant = {
-          ...formValue,
-          id: this.highestPlantId + 1,
-        };
-
-        this.plantsService.addPlant(plant);
-        this.router.navigate(['/plant-inventory']);
-      } else {
-        console.log('error 1')
-      }
-    } catch (error) {
-      console.log('error 1')
+      this.plantsService.addPlant(plant);
+      this.router.navigate(['/plant-inventory']);
     }
+    this.saveErrorState.update(() => ({ error: true }));
   }
 
   navigateToPlantInventory() {

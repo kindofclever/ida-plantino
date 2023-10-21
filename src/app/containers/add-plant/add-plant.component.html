@@ -70,4 +70,13 @@
       ><button mat-raised-button color="accent" type="submit">Save</button>
     </div>
   </form>
+  <p
+    *ngIf="!addPlantForm.valid && addPlantForm.touched"
+    class="mt-6 text-tomatoSoup-100 text-sm"
+  >
+    <span class="pr-4">⚠️</span> Please fill out all required fields.
+  </p>
+  <p *ngIf="saveError()" class="mt-6 text-tomatoSoup-100 text-sm">
+    <span class="pr-4">🤔</span> Something went wrong, please try again.
+  </p>
 </section>
