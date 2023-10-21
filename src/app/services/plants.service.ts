@@ -33,5 +33,11 @@ export class PlantsService {
     }
   }
 
-  constructor() {}
+  highestPlantId = computed(() => {
+    const plants = this.plants();
+    if (!isNil(plants) && plants.length > 0) {
+      return Math.max(...plants.map(plant => plant.id));
+    }
+    return 0;
+  });
 }
